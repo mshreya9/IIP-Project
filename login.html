@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<title>Online Voting App | Login</title>
+</head>
+
+<body>
+
+	<nav>
+		<div class="nav-wrapper teal lighten-2" style="padding-left : 50px; padding-right : 50px">
+			<a href="#" class="brand-logo" style="text-align: left">VOTE</a>
+		</div>
+	</nav>
+
+	<div class="row" style="padding: 20px 5px; margin-top : 40px;">
+		<div class="col s2 l3"></div>
+		<div id="status" class="col s8 l6"
+			style="min-height : 70px; border-radius : 10px; padding : 10px 20px; text-align : center; color : red;">
+		</div>
+		<div class="col s2 l3"></div>
+	</div>
+
+	<div class="row" style="padding: 20px 5px; ">
+		<div class="col s3"></div>
+		<div class="col s6">
+			<input placeholder="Email or UID" type="email" id="uid" class="validate">
+		</div>
+		<div class="col s3"></div>
+	</div>
+	<div class="row" style="padding: 20px 5px;">
+		<div class="col s3"></div>
+		<div class="col s6">
+			<input placeholder="Password" type="text" id="pwd" class="validate">
+		</div>
+		<div class="col s3"></div>
+	</div>
+	<div class="row" style="padding: 20px 5px; text-align: center;">
+
+		<div class="col s3"></div>
+		<div class="col s6">
+			<a class="waves-effect waves-light btn" id="submit">Submit</a>
+		</div>
+		<div class="col s3"></div>
+	</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+	<script>
+
+
+
+		window.onload = () => {
+
+			document.getElementById("submit").addEventListener("click", () => {
+
+				if (window.localStorage.getItem("voted") == "yes") {
+					window.location.href = "success.html"
+				}
+
+				let username = document.getElementById("uid").value;
+				let password = document.getElementById("pwd").value;
+				console.log(username, password)
+				if (username == "shreya.maheshwari06@gmail.com" && password == "1234567890") {
+					window.localStorage.setItem("loggedIn", "yes")
+					window.location.href = "IIP.html"
+				} else {
+					document.getElementById("status").innerHTML = "Username and password entered by you was wrong"
+					setTimeout(() => {
+						document.getElementById("status").innerHTML = ""
+					}, 3500)
+				}
+			})
+		}
+
+	</script>
+</body>
+
+</html>
